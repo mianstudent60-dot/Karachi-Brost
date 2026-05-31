@@ -1,0 +1,6 @@
+{
+  "name": "Karachi Chicken Broast & Bar-B-Q",
+  "description": "Premium 3D-inspired single-page visual experience for Karachi Chicken Broast & Bar-B-Q in Vehari, Punjab. Features custom cursor, ambient ember particles, dynamic menu filtering, and customized inquiries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

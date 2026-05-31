@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@theme {
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+  --font-plus: 'Plus Jakarta Sans', sans-serif;
+  
+  --color-fire-orange: #ff4d00;
+  --color-ember: #ff2a00;
+  --color-gold: #ffd700;
+  --color-charcoal: #0e0d0d;
+}
+
+@layer utilities {
+  .font-bebas {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-plus {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Custom Webkit scrollbar matching the hot grill motif */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0909;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff4d00 0%, #ff2a00 50%, #ffd700 100%);
+  border-radius: 9999px;
+  border: 2px solid #0a0909;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4d00;
+}
+
+/* Cast-iron grill texture */
+.grill-texture {
+  position: relative;
+  background-color: #0d0c0c;
+  background-image: 
+    radial-gradient(ellipse at center, rgba(13, 12, 12, 0) 0%, #070707 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(255, 77, 0, 0.015) 19px, transparent 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(255, 77, 0, 0.015) 19px, transparent 20px);
+}
+
+.grill-diagonal-lines {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(15, 14, 14, 0.95) 0px,
+    rgba(15, 14, 14, 0.95) 6px,
+    rgba(22, 19, 19, 0.98) 6px,
+    rgba(22, 19, 19, 0.98) 24px
+  );
+}
+
+/* Fire glow pulsing animation */
+@keyframes fire-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+    filter: blur(100px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.15);
+    filter: blur(80px);
+  }
+}
+
+.animate-fire-glow {
+  animation: fire-glow 8s ease-in-out infinite;
+}
+
+/* Animated embers (sparks rising) */
+@keyframes ember-rise {
+  0% {
+    transform: translateY(110vh) translateX(0) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(var(--drift-x, 60px)) rotate(360deg) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.animate-ember {
+  position: absolute;
+  bottom: -40px;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: ember-rise linear infinite;
+  background: radial-gradient(circle at center, #fbbf24, #ff5f1f, #b91c1c);
+}
+
+/* Infinite Review Scroll Animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 45s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Hide navigation cursor ring on devices that do not support hovering (mobiles) */
+@media (hover: none) {
+  .custom-cursor {
+    display: none !important;
+  }
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* Reveal Entrance Transitions */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Spinning starburst container */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+
+/* Flickering coal fire background effect */
+@keyframes coal-flicker {
+  0%, 100% {
+    opacity: 0.82;
+    filter: brightness(0.9);
+  }
+  30% {
+    opacity: 0.95;
+    filter: brightness(1.1);
+  }
+  65% {
+    opacity: 0.88;
+    filter: brightness(0.95);
+  }
+  85% {
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+}
+
+.animate-coal-flicker {
+  animation: coal-flicker 4s ease-in-out infinite;
+}
